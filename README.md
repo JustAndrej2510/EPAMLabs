@@ -1,2 +1,2 @@
 # EPAM Labs
-## Andrej Pisarik Group №2
+## Andrej Pisarik, group №2
