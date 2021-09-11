@@ -1,0 +1,4 @@
+*.db
+*.log
+[Bb]in/
+[Tt]arget/
