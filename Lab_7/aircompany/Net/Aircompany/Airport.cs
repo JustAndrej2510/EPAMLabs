@@ -15,19 +15,27 @@ namespace Aircompany
             Planes = planes.ToList();
         }
 
-        public List<T> GetPlanes<T>() where T : Plane
+        public IEnumerable<T> GetPlanes<T>() where T : class
         {
-            return (List<T>)Planes.Where(plane => plane.GetType() == typeof(T));
+            List<T> desiredPlanes = new List<T>();
+            foreach (var plane in Planes)
+            {
+                if (plane.GetType() == typeof(T))
+                {
+                    desiredPlanes.Add(plane as T);
+                }
+            }
+            return desiredPlanes;
         }
 
         public PassengerPlane GetPassengerPlaneWithMaxPassengersCapacity()
         {
-            return (PassengerPlane)GetPlanes<PassengerPlane>().OrderByDescending(plane => plane.PassengersCapacity).Take(1);
+            return (PassengerPlane)GetPlanes<PassengerPlane>().OrderByDescending(plane => plane.PassengersCapacity).First();
         }
 
         public List<MilitaryPlane> GetTransportMilitaryPlanes()
         {
-            return (List<MilitaryPlane>)GetPlanes<MilitaryPlane>().Where(plane => plane.MilitaryPlaneType == MilitaryType.Transport);
+            return GetPlanes<MilitaryPlane>().Where(plane => plane.MilitaryPlaneType == MilitaryType.Transport).ToList();
         }
 
         public Airport SortByMaxDistance()
