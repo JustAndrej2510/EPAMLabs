@@ -8,34 +8,26 @@ namespace Aircompany
 {
     public class Airport
     {
-        public List<Plane> Planes { get; private set; }
+        public IEnumerable<Plane> Planes { get; private set; }
 
         public Airport(IEnumerable<Plane> planes)
         {
-            Planes = planes.ToList();
+            Planes = planes;
         }
 
-        public IEnumerable<T> GetPlanes<T>() where T : class
+        public IEnumerable<T> GetPlanes<T>() where T : Plane
         {
-            List<T> desiredPlanes = new List<T>();
-            foreach (var plane in Planes)
-            {
-                if (plane.GetType() == typeof(T))
-                {
-                    desiredPlanes.Add(plane as T);
-                }
-            }
-            return desiredPlanes;
+            return Planes.Where(plane => plane.GetType() == typeof(T)).Cast<T>();
         }
 
         public PassengerPlane GetPassengerPlaneWithMaxPassengersCapacity()
         {
-            return (PassengerPlane)GetPlanes<PassengerPlane>().OrderByDescending(plane => plane.PassengersCapacity).First();
+            return GetPlanes<PassengerPlane>().OrderByDescending(plane => plane.PassengersCapacity).First();
         }
 
-        public List<MilitaryPlane> GetTransportMilitaryPlanes()
+        public IEnumerable<MilitaryPlane> GetTransportMilitaryPlanes()
         {
-            return GetPlanes<MilitaryPlane>().Where(plane => plane.MilitaryPlaneType == MilitaryType.Transport).ToList();
+            return GetPlanes<MilitaryPlane>().Where(plane => plane.MilitaryPlaneType == MilitaryType.Transport);
         }
 
         public Airport SortByMaxDistance()
