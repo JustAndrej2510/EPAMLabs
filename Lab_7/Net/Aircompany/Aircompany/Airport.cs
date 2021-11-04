@@ -47,7 +47,7 @@ namespace Aircompany
 
         public override string ToString()
         {
-            return $"Airport planes: {string.Join(", ", Planes.Select(plane => plane.Model))}";
+            return $"Airport planes: {string.Join(",  ", Planes.Select(plane => plane.Model))}";
         }
     }
 }
