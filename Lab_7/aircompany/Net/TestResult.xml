@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-run id="0" runstate="Runnable" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="3" engine-version="3.12.0.0" clr-version="4.0.30319.42000" start-time="2021-11-04 18:35:48Z" end-time="2021-11-04 18:35:49Z" duration="0.569915">
+  <command-line><![CDATA["D:\Учеба\1 семестр\EPAMLabs\Lab_7\aircompany\Net\packages\NUnit.ConsoleRunner.3.12.0\tools\nunit3-console.exe" AircompanyTests\AircompanyTests.csproj]]></command-line>
+  <test-suite type="Project" id="1" name="AircompanyTests.csproj" fullname="D:\Учеба\1 семестр\EPAMLabs\Lab_7\aircompany\Net\AircompanyTests\AircompanyTests.csproj" runstate="Runnable" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="3">
+    <test-suite type="Assembly" id="3-1004" name="AircompanyTests.dll" fullname="D:\Учеба\1 семестр\EPAMLabs\Lab_7\aircompany\Net\AircompanyTests\bin\Debug\AircompanyTests.dll" runstate="Runnable" testcasecount="3" result="Passed" start-time="2021-11-04T18:35:49.2634734Z" end-time="2021-11-04T18:35:49.3901706Z" duration="0.126120" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="3">
+      <environment framework-version="3.13.2.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.19042.0" platform="Win32NT" cwd="D:\Учеба\1 семестр\EPAMLabs\Lab_7\aircompany\Net" machine-name="DESKTOP-9MRILNP" user="Andrej" user-domain="DESKTOP-9MRILNP" culture="ru-BY" uiculture="ru-RU" os-architecture="x64" />
+      <settings>
+        <setting name="BasePath" value="D:\Учеба\1 семестр\EPAMLabs\Lab_7\aircompany\Net\AircompanyTests\bin\Debug\" />
+        <setting name="DisposeRunners" value="True" />
+        <setting name="WorkDirectory" value="D:\Учеба\1 семестр\EPAMLabs\Lab_7\aircompany\Net" />
+        <setting name="ActiveConfig" value="Debug" />
+        <setting name="ConfigNames" value="System.Collections.Generic.List`1[System.String]" />
+        <setting name="ImageRuntimeVersion" value="4.0.30319" />
+        <setting name="ImageTargetFrameworkName" value=".NETFramework,Version=v4.6.1" />
+        <setting name="ImageRequiresX86" value="False" />
+        <setting name="ImageRequiresDefaultAppDomainAssemblyResolver" value="False" />
+        <setting name="TargetRuntimeFramework" value="net-4.0" />
+        <setting name="NumberOfTestWorkers" value="12" />
+      </settings>
+      <properties>
+        <property name="_PID" value="9816" />
+        <property name="_APPDOMAIN" value="domain-54bc52d5-AircompanyTests.csproj" />
+      </properties>
+      <test-suite type="TestSuite" id="3-1005" name="AircompanyTests" fullname="AircompanyTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2021-11-04T18:35:49.2774358Z" end-time="2021-11-04T18:35:49.3901706Z" duration="0.112697" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="3">
+        <test-suite type="TestSuite" id="3-1006" name="Tests" fullname="AircompanyTests.Tests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2021-11-04T18:35:49.2774358Z" end-time="2021-11-04T18:35:49.3901706Z" duration="0.112391" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="3">
+          <test-suite type="TestFixture" id="3-1000" name="AirportTest" fullname="AircompanyTests.Tests.AirportTest" classname="AircompanyTests.Tests.AirportTest" runstate="Runnable" testcasecount="3" result="Passed" start-time="2021-11-04T18:35:49.2794306Z" end-time="2021-11-04T18:35:49.3891706Z" duration="0.110253" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="3">
+            <test-case id="3-1002" name="GetPassengerPlaneWithMaxPassengersCapacity_ReturnsExpectedPlaneValue" fullname="AircompanyTests.Tests.AirportTest.GetPassengerPlaneWithMaxPassengersCapacity_ReturnsExpectedPlaneValue" methodname="GetPassengerPlaneWithMaxPassengersCapacity_ReturnsExpectedPlaneValue" classname="AircompanyTests.Tests.AirportTest" runstate="Runnable" seed="429545922" result="Passed" start-time="2021-11-04T18:35:49.2824225Z" end-time="2021-11-04T18:35:49.3781999Z" duration="0.096567" asserts="1" />
+            <test-case id="3-1001" name="GetTransportMilitaryPlanes_HasAnyTransportMilitaryPlanes_ReturnsTrue" fullname="AircompanyTests.Tests.AirportTest.GetTransportMilitaryPlanes_HasAnyTransportMilitaryPlanes_ReturnsTrue" methodname="GetTransportMilitaryPlanes_HasAnyTransportMilitaryPlanes_ReturnsTrue" classname="AircompanyTests.Tests.AirportTest" runstate="Runnable" seed="1104044885" result="Passed" start-time="2021-11-04T18:35:49.3811584Z" end-time="2021-11-04T18:35:49.3861447Z" duration="0.004780" asserts="1" />
+            <test-case id="3-1003" name="SortByMaxLoadCapacity_ReturnsExpectedPlaneCollection" fullname="AircompanyTests.Tests.AirportTest.SortByMaxLoadCapacity_ReturnsExpectedPlaneCollection" methodname="SortByMaxLoadCapacity_ReturnsExpectedPlaneCollection" classname="AircompanyTests.Tests.AirportTest" runstate="Runnable" seed="1439453296" result="Passed" start-time="2021-11-04T18:35:49.3861447Z" end-time="2021-11-04T18:35:49.3881884Z" duration="0.001908" asserts="1" />
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
