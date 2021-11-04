@@ -14,13 +14,13 @@ namespace Calculator
             {
                 double a, b;
                 char command;
-                Console.Write("Введите 1 число: ");
+                Console.Write("Enter first number: ");
                 a = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine();
-                Console.Write("Введите действие (+, -, *, /): ");
+                Console.Write("Choose command (+, -, *, /): ");
                 command = Console.ReadKey().KeyChar;
                 Console.WriteLine();
-                Console.Write("Введите 2 число: ");
+                Console.Write("Enter second number: ");
                 b = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine();
                 switch (command)
@@ -38,7 +38,7 @@ namespace Calculator
                         Console.WriteLine(CalculatorCommands.Divide(a, b));
                         break;
                     default:
-                        Console.WriteLine("Такой операции не существует");
+                        Console.WriteLine("Invalid command");
                         break;
                 }
             }
