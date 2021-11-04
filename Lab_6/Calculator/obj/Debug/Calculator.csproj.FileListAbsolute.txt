@@ -1,7 +1,0 @@
-D:\Учеба\1 семестр\EPAMLabs\Lab_6\Calculator\bin\Debug\Calculator.exe.config
-D:\Учеба\1 семестр\EPAMLabs\Lab_6\Calculator\bin\Debug\Calculator.exe
-D:\Учеба\1 семестр\EPAMLabs\Lab_6\Calculator\bin\Debug\Calculator.pdb
-D:\Учеба\1 семестр\EPAMLabs\Lab_6\Calculator\obj\Debug\Calculator.csprojAssemblyReference.cache
-D:\Учеба\1 семестр\EPAMLabs\Lab_6\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
-D:\Учеба\1 семестр\EPAMLabs\Lab_6\Calculator\obj\Debug\Calculator.exe
-D:\Учеба\1 семестр\EPAMLabs\Lab_6\Calculator\obj\Debug\Calculator.pdb
