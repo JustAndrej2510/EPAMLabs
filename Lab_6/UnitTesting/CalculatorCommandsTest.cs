@@ -7,7 +7,7 @@ namespace UnitTesting
     [TestFixture]
     public class CalculatorCommandsTest
     {
-        private static object[] MultiplyCases ={
+        private static object[] _multiplyCases ={
             new object[] { 3, 4, 12 },
             new object[] { -1, -2, 2 },
             new object[] { -100, 4, -400 },
@@ -18,48 +18,49 @@ namespace UnitTesting
         [TestCase(1, 2.5, 3.5)]
         [TestCase(-3, -1, -4)]
         [TestCase(10, -100, -90)]
-        public void SumNumbersTest(double a, double b, double expected)
+        public void Sum_ValidInputValues_ReturnsExpected(double a, double b, double expected)
         {
-            Assert.AreEqual(expected, CalculatorCommands.Sum(a,b) );
+            var actual = CalculatorCommands.Sum(a, b);
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCase(7, 5, 2)]
         [TestCase(0, 10, -10)]
         [TestCase(-3, -1, -2)]
         [TestCase(10, 0, 10)]
-        public void SubstractNumbersTest(double a, double b, double expected)
+        public void Substract_ValidInputValues_ReturnsExpected(double a, double b, double expected)
         {
-            Assert.AreEqual(expected, CalculatorCommands.Substract(a, b));
+            var actual = CalculatorCommands.Substract(a, b);
+
+            Assert.AreEqual(expected, actual);
         }
 
-        [TestCaseSource(nameof(MultiplyCases))]
-        public void MultiplyNumbersTest(double a, double b, double expected)
+        [TestCaseSource(nameof(_multiplyCases))]
+        public void Multiply_ValidInputValues_ReturnsExpected(double a, double b, double expected)
         {
-            Assert.AreEqual(expected, CalculatorCommands.Multiply(a, b));
+            var actual = CalculatorCommands.Multiply(a, b);
+
+            Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        public void DivideNumbersReturnsNumberAboveZeroCaseTest()
+        [TestCase(10, 5, 2)]
+        [TestCase(0, 10, 0)]
+        [TestCase(-3, 100, -0.03)]
+        public void Divide_ValidInputValues_ReturnsNumberAboveZero(double a, double b, double expected)
         {
-            Assert.AreEqual(2, CalculatorCommands.Divide(10, 5));
-        }
+            var actual = CalculatorCommands.Divide(a, b);
 
-        [Test]
-        public void DivideNumbersReturnsNumberBelowZeroCaseTest()
-        {
-            Assert.AreEqual(-2, CalculatorCommands.Divide(10, -5));
-        }
-
-        [Test]
-        public void DivideNumbersReturnsNumberEqualZeroCaseTest()
-        {
-            Assert.AreEqual(0, CalculatorCommands.Divide(0, 10));
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        public void DivideNumbersReturnsDivideByZeroExceprionCaseTest()
+        public void Divide_InvalidDividerEqualToZero_ThrowsDivideByZeroException()
         {
-            Assert.Throws<DivideByZeroException>(() => CalculatorCommands.Divide(10, 0));
+            var dividend = 10;
+            var divider = 0;
+
+            Assert.Throws<DivideByZeroException>(() => CalculatorCommands.Divide(dividend, divider));
         }
 
     }
