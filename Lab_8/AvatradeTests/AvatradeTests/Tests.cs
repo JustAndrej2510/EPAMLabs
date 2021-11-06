@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -13,6 +15,8 @@ namespace AvatradeTests
 
         private const string TestEmail = "epamLabsTest@gmail.com";
         private const string TestPassword = "Pa$$w0rd";
+
+        private const string ExpectedDeal = "BTCUSD";
 
         [SetUp]
         public void StartPageSetup()
@@ -36,9 +40,28 @@ namespace AvatradeTests
         }
 
         [Test]
-        public void CreatingDealToBuyBTCUSDTest()
+        public void CreateDealToBuyBTCUSDTest()
         {
-            Assert.Pass();
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
+            var searchCurrencyInput = _wait.Until(ExpectedConditions.ElementIsVisible(By
+                .XPath("//input[@class='input_input__HVTcI input.child_input__2CwYp']")));
+            searchCurrencyInput.SendKeys("BTCUSD");
+
+            var selectCurrency = _wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//mark[text()='BTCUSD']/../..")));
+            selectCurrency.Click();
+
+            var createDealBtn = _wait.Until(ExpectedConditions.ElementIsVisible(By
+                .XPath("//button[@class='button_container__1ULFl button.child_container__2Gdpz button_container_primary__urKYb']")));
+           createDealBtn.Click();
+
+            var switchToDealPageBtn = _driver.FindElement(By.XPath("//a[@href='/positions']"));
+            switchToDealPageBtn.Click();
+
+            _wait.Until(ExpectedConditions.ElementExists(By.XPath("//tr[@data-tour='positions']")));
+
+            var actualDeal = _driver.FindElement(By.XPath("//tr[@data-tour='positions']/td[1]//div[text()='BTCUSD']")).Text;
+
+            Assert.AreEqual(ExpectedDeal, actualDeal);
         }
 
         [TearDown]
