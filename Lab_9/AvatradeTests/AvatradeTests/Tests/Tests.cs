@@ -29,7 +29,6 @@ namespace AvatradeTests.Tests
 
             startPage = new StartPage(_driver);
             startPage.LogIn();
-            Thread.Sleep(100);
             startPage.InputEmail(TestEmail);
             startPage.InputPassword(TestPassword);
             startPage.SubmitAuthorization();

@@ -74,7 +74,7 @@ namespace AvatradeTests.PageObject
 
         public string GetActualDeal()
         {
-            var dealPositions = FindElementWithWaitElementIsVisible(dealPositionsLocator, 5);
+            var dealPositions = FindElementWithWaitElementExists(dealPositionsLocator, 5);
             return FindElementWithWaitElementIsVisible(actualDealLocator, 5).Text;
         }
     }
