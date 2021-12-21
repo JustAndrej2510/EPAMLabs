@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
-using FluentAssertions;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using AvatradeTests.PageObject;
 using System.Threading;
+using Avatrade.Pages;
 
-namespace AvatradeTests.Tests
+namespace Avatrade
 {
     public class Tests
     {
@@ -26,6 +25,8 @@ namespace AvatradeTests.Tests
             _driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             _driver.Navigate().GoToUrl("https://www.avatrade.com/");
             _driver.Manage().Window.Maximize();
+            //_driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
 
             startPage = new StartPage(_driver);
             startPage.LogIn();

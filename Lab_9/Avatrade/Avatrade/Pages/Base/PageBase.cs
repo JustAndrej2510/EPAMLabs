@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using FluentAssertions;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AvatradeTests.PageObject.Base
+namespace Avatrade.Pages.Base
 {
     abstract class PageBase
     {
@@ -42,4 +43,3 @@ namespace AvatradeTests.PageObject.Base
         }
     }
 }
-
