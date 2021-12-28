@@ -1,0 +1,12 @@
+{
+  "TestSettings": {
+    "User": {
+      "Email": "epamLabsTests@gmail.com",
+      "Password": "Pa$$w0rd"
+    },
+    "Browser": {
+      "Name" :  "Chrome"
+    }
+  }
+
+}

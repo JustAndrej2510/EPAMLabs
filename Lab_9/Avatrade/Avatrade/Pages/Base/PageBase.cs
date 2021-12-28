@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Avatrade.Pages.Base
 {
-    abstract class PageBase
+    internal abstract class PageBase
     {
-        private IWebDriver _driver;
+        protected IWebDriver _driver;
         private WebDriverWait _wait;
 
         public PageBase(IWebDriver driver)
@@ -19,6 +19,26 @@ namespace Avatrade.Pages.Base
             this._driver = driver;
         }
 
+        public List<IWebElement> GetElements(By locator)
+        {
+            IReadOnlyCollection<IWebElement> readOnlyElements = _driver.FindElements(locator);
+            List<IWebElement> elements = new List<IWebElement>();
+            foreach (IWebElement element in readOnlyElements)
+                elements.Add(element);
+
+            return elements;
+        }
+
+        public List<IWebElement> GetVisibilityElements(By locator, double seconds)
+        {
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(seconds);
+            IReadOnlyCollection<IWebElement> readOnlyElements = _driver.FindElements(locator);
+            List<IWebElement> elements = new List<IWebElement>();
+            foreach (IWebElement element in readOnlyElements)
+                elements.Add(element);
+
+            return elements;
+        }
         public IWebElement FindElement(By locator)
         {
             return _driver.FindElement(locator);
@@ -40,6 +60,11 @@ namespace Avatrade.Pages.Base
         {
             _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(seconds));
             return _wait.Until(ExpectedConditions.ElementExists(locator));
+        }
+
+        public void SwitchToFrame(By frameLocator)
+        {
+            _driver.SwitchTo().Frame(FindElement(frameLocator));
         }
     }
 }

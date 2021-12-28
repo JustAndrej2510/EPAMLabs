@@ -1,5 +1,7 @@
 ﻿using Avatrade.Pages.Base;
+using Avatrade.Utils;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,74 +12,79 @@ namespace Avatrade.Pages
 {
     class StartPage : PageBase
     {
-        private By logInBtnLocator = By.XPath("//div[@class='log-in-desktop']//span[@class='link-btn']");
-        private By inputEmailLocator = By.Id("input-email");
-        private By inputPasswordLocator = By.Id("input-password");
-        private By submitBtnLocator = By.XPath("//div[@class='button-wrapper']//button[@type='submit']");
+       
         private By searchCurrencyInputLocator = By.XPath("//input[@class='input_input__HVTcI input.child_input__2CwYp']");
         private By selectCurrencyLocator = By.XPath("//mark[text()='BTCUSD']/../..");
-        private By createDealBtnLocator = By
+        private By createDealToBuyBtnLocator = By
             .XPath("//button[@class='button_container__1ULFl button.child_container__2Gdpz button_container_primary__urKYb']");
+        private By selectSellDealBtnLocator = By.XPath("//span[@data-key='orderEntryPanelSideSell']");
         private By switchToDealPageBtnLocator = By.XPath("//li[@data-tour='positionsMenu']//a[@class='aside_link__1hN4T']");
-        //private By dealPositionsLocator = By.XPath("//li[@data-tour='positionsMenu']//a[@class='aside_link__1hN4T']");
-        private By actualDealLocator = By.XPath("//tr[@data-tour='positions']/td[1]//div[text()='BTCUSD']");
-        public StartPage(IWebDriver driver) : base(driver)
-        {
+        private By switchToOrderPageBtnLocator = By.XPath("//li[@data-tour='positionsMenu']//following::li[1]");
+        private By switchToChatPageBtnLocator = By.XPath("//li[@data-tour='positionsMenu']//following::li[4]");
 
-        }
+        public StartPage(IWebDriver driver) : base(driver) {}
 
-        public void LogIn()
+        public StartPage SearchCurrencyInput(string currency)
         {
-            IWebElement logInBtn = FindElementWithWaitElementIsVisible(logInBtnLocator, 5);
-            //IWebElement logInBtn = FindElement(logInBtnLocator);
-            logInBtn.Click();
-
-        }
-        public void InputEmail(string testEmail)
-        {
-            //FindElementWithWaitElementExists(popupLocator, 5);
-            var inputEmail = FindElementWithWaitElementIsVisible(inputEmailLocator, 5);
-            inputEmail.SendKeys(testEmail);
-        }
-        public void InputPassword(string testPassword)
-        {
-            IWebElement inputPassword = FindElementWithWaitElementIsVisible(inputPasswordLocator, 5);
-            inputPassword.SendKeys(testPassword);
-        }
-        public void SubmitAuthorization()
-        {
-            IWebElement submitBtn = FindElement(submitBtnLocator);
-            submitBtn.Click();
-        }
-
-        public void SearchCurrencyInput(string currency)
-        {
-            IWebElement searchCurrencyInput = FindElementWithWaitElementIsVisible(searchCurrencyInputLocator, 5);
+            IWebElement searchCurrencyInput = FindElementWithWaitElementIsVisible(searchCurrencyInputLocator, 10);
             searchCurrencyInput.SendKeys(currency);
+
+            Logger.WriteToLog($"Search currency {currency} was started");
+            return this;
         }
 
-        public void SelectCurrency()
+        public StartPage SelectCurrency()
         {
-            IWebElement searchCurrency = FindElementWithWaitElementIsVisible(selectCurrencyLocator, 5);
+            IWebElement searchCurrency = FindElementWithWaitElementIsVisible(selectCurrencyLocator, 10);
             searchCurrency.Click();
+
+            Logger.WriteToLog($"Currency was selected");
+            return this;
         }
 
-        public void CreateDeal()
+        public StartPage CreateDeal()
         {
-            IWebElement createDealBtn = FindElementWithWaitElementIsVisible(createDealBtnLocator, 5);
+            IWebElement createDealBtn = FindElementWithWaitElementIsVisible(createDealToBuyBtnLocator, 10);
             createDealBtn.Click();
+
+            Logger.WriteToLog($"Create deal button was clicked");
+            return this;
         }
 
-        public void SwitchToDealPage()
+        public StartPage SelectSellDeal()
         {
-            IWebElement switchToDealPageBtn = FindElement(switchToDealPageBtnLocator);
+            IWebElement createDealBtn = FindElementWithWaitElementIsVisible(selectSellDealBtnLocator, 10);
+            createDealBtn.Click();
+
+            Logger.WriteToLog($"Create deal to sell currency button was clicked");
+            return this;
+        }
+
+        public OrderPage SwitchToOrderPage()
+        {
+            IWebElement switchToOrderPageBtn = FindElementWithWaitElementToBeClickable(switchToOrderPageBtnLocator, 10);
+            switchToOrderPageBtn.Click();
+
+            Logger.WriteToLog($"Page was switched to Order page");
+            return new OrderPage(_driver);
+        }
+
+        public DealPage SwitchToDealPage()
+        {
+            IWebElement switchToDealPageBtn = FindElementWithWaitElementIsVisible(switchToDealPageBtnLocator, 10);
             switchToDealPageBtn.Click();
+
+            Logger.WriteToLog($"Page was switched to Deal page");
+            return new DealPage(_driver);
         }
 
-        public string GetActualDeal()
+        public ChatPage SwitchToChatPage()
         {
-            //var dealPositions = FindElementWithWaitElementExists(dealPositionsLocator, 5);
-            return FindElementWithWaitElementIsVisible(actualDealLocator, 5).Text;
+            IWebElement switchToChatPageBtn = FindElementWithWaitElementIsVisible(switchToChatPageBtnLocator, 10);
+            switchToChatPageBtn.Click();
+
+            Logger.WriteToLog($"Page was switched to Chat page");
+            return new ChatPage(_driver);
         }
     }
 }
